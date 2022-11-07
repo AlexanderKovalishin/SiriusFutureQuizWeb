@@ -21,33 +21,7 @@
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">SiriusFutureQuiz</div>
-      </div>
-	  <script>
-	    var resize_function = function() {
-			var dElement = document.documentElement;
-			var obj = document.getElementById('unity-containe');
-			var k21x9 = 2.3333;
-			var k4x3 = 1.4545;
-			var screenX = window.innerWidth;
-			var screenY = window.innerHeight;
-			var aspect = screenX/screenY
-			if (screenX/screenY < k4x3)
-			{
-			  screenX = screenX;
-			  screenY = screenX/k4x3;
-			}
-			else if (screenX/screenY > k21x9)
-			{
-			  screenY = screenY;
-			  screenX = screenY*k21x9;
-			}
-			
-			obj.style.width = (screenX - 200) + "px";
-			obj.style.height = (screenY - 300) + "px";
-		}
-		resize_function();
-		window.addEventListener('resize', resize_function, true);
-	  </script>
+      </div>	  
     </div>
     <script>
       var container = document.querySelector("#unity-container");
