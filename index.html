@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<style type="text/css">
+      #unityContainer { width: 100%; height: 100%; }
+      #unityContainer canvas { width: 100%; height: 100%; position: absolute; }
+    </style>
+    <title>%UNITY_WEB_NAME%</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+    <script>
+	  function showWarning(id, buttonId, callback)
+	  {
+		var warningWindow = document.getElementById(id);
+		warningWindow.style.display = 'block';
+		btOk = document.getElementById(buttonId);
+		btOk.onclick = function (){
+			warningWindow.style.display = 'none';
+			callback();
+		}
+	  };
+	  
+      var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%", 
+	  {
+	   compatibilityCheck: function (unityInstance, onsuccess, onerror) {
+			if (!UnityLoader.SystemInfo.hasWebGL) {
+			  unityInstance.popup("Your browser does not support WebGL",
+				[{text: "OK", callback: onerror}]);			
+			} else {
+			  onsuccess();
+			}
+		},
+		onProgress: UnityProgress
+	  });
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer"></div>
+	  <script>
+	    var resize_function = function() {
+			var dElement = document.documentElement;
+			var obj = document.getElementById('unityContainer');
+			var k21x9 = 2.3333;
+			var k4x3 = 1.4545;
+			var screenX = window.innerWidth;
+			var screenY = window.innerHeight;
+			var aspect = screenX/screenY
+			if (screenX/screenY < k4x3)
+			{
+			  screenX = screenX;
+			  screenY = screenX/k4x3;
+			}
+			else if (screenX/screenY > k21x9)
+			{
+			  screenY = screenY;
+			  screenX = screenY*k21x9;
+			}
+			
+			obj.style.width = (screenX - 20) + "px";
+			obj.style.height = (screenY - 20) + "px";
+		}
+		resize_function();
+		window.addEventListener('resize', resize_function, true);
+	  </script>
+    </div>
+  </body>
+</html>
