@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=1920 height=1080></canvas>
+      <canvas id="unity-canvas" width=1280 height=720></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -42,8 +42,8 @@
 			  screenX = screenY*k21x9;
 			}
 			
-			obj.style.width = (screenX - 200) + "px";
-			obj.style.height = (screenY - 200) + "px";
+			obj.style.width = (screenX - 400) + "px";
+			obj.style.height = (screenY - 400) + "px";
 		}
 		resize_function();
 		window.addEventListener('resize', resize_function, true);
